@@ -13,10 +13,18 @@ jobs:
     - name: Checkout code
       uses: actions/checkout@v2
 
-    - name: Set up Node.js
+    - name: Use Node.js
       uses: actions/setup-node@v2
       with:
-        node-version: '16' # Make sure to use the correct Node.js version
+        node-version: '16' # Ensure this matches your local development environment
+
+    - name: Cache node modules
+      uses: actions/cache@v2
+      with:
+        path: node_modules
+        key: ${{ runner.os }}-node-${{ hashFiles('**/package-lock.json') }}
+        restore-keys: |
+          ${{ runner.os }}-node-
 
     - name: Install dependencies
       run: npm install

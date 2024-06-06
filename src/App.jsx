@@ -33,69 +33,67 @@ function App() {
   },[Pass])
 
   return (
-     <div className=" bg-white border border-gray-400 p-6 max-w-xl mx-auto rounded-3xl shadow-3xl">
-      <label className="block font-mono font-bold text-2xl text-gray-900 mb-2 ">
-          PASSWORD
-      </label>
-      <div className="mb-4">
-        <div className="mb-4 flex">
-        
-          <input
-            placeholder='password'
-            type="text"
-            value={Pass}
-            readOnly
-            ref={passRef}
-            className="w-full  text-lg mt-1 p-2 border border-gray-300 rounded-lg"
-          />
+    <div className="bg-white border border-gray-400 p-6 max-w-xl mx-auto rounded-3xl shadow-3xl sm:p-4 sm:max-w-xl">
+    <label className="block font-mono font-bold text-2xl text-gray-900 mb-2 text-center">
+      PASSWORD
+    </label>
+    <div className="mb-4">
+      <div className="mb-4 flex flex-col items-stretch md:flex-row md:items-center">
+        <input
+          placeholder="password"
+          type="text"
+          value={Pass}
+          readOnly
+          ref={passRef}
+          className="w-full text-lg mt-1 p-2 border border-gray-300 rounded-lg md:mt-0 md:mb-0"
+        />
         <button
           onClick={copytoclipboard}
-          className="w-26 mt-1 ml-4 bg-blue-500 text-white py-2 px-4 rounded-full hover:bg-blue-700"
+          className="w-full mt-2 bg-blue-500 text-white py-2 px-4 rounded-full hover:bg-blue-700 sm:w-20 sm:ml-4 sm:mt-0 sm:px-2"
         >
           Copy
         </button>
-        </div>
       </div>
-      <div className="mb-4 flex ">
-        <div className="m-3 mr-0">
-          <input
-            type="range"
-            min="5"
-            max="25"
-            value={length}
-            className="cursor-pointer w-full mt-1"
-            onChange={(e)=>{setlength(e.target.value)}}
-          />
+    </div>
+    <div className="mb-4 flex flex-col items-start md:flex-row md:items-center">
+      <div className="w-full mb-2 md:mb-0">
+        <input
+          type="range"
+          min="5"
+          max="25"
+          value={length}
+          className="cursor-pointer w-full mt-1"
+          onChange={(e) => { setlength(e.target.value); }}
+        />
       </div>
-      <label className="block text-gray-700 font-bold m-3 ml-2 mr-0">
-          Length: {length}
+      <label className=" block text-gray-700 font-bold w-full text-center md:w-full md:text-left md:ml-4 ">
+        Length: {length}
       </label>
-      <div className="m-3 mr-0 ml-5">
-        <label className="inline-flex items-center">
+      <div className="w-full mb-2 md:mb-0 md:ml-5 md: mr-0">
+        <label className="inline-flex items-center w-full">
           <input
             type="checkbox"
             defaultChecked={numAllowed}
-            onChange={()=>{setNumAllowed((prev)=> !prev)}}
+            onChange={() => { setNumAllowed((prev) => !prev); }}
             className="form-checkbox"
           />
           <span className="ml-2 text-gray-700">Numbers</span>
         </label>
       </div>
-      <div className="m-3">
-        <label className="inline-flex items-center">
+      <div className="w-full ml-0">
+        <label className="inline-flex items-center w-full">
           <input
             type="checkbox"
             defaultChecked={charAllowed}
-            onChange={()=>{
-              setcharAllowed((prev)=> !prev)
-            }}
+            onChange={() => { setcharAllowed((prev) => !prev); }}
             className="form-checkbox"
           />
           <span className="ml-2 text-gray-700">Characters</span>
         </label>
-        </div>
       </div>
     </div>
+  </div>
+  
   )
 }
 
